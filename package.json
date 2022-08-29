@@ -4,12 +4,14 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "ts": "tsc",
+    "build": "tsc",
     "ts:dev": "tsc -w",
     "start": "node .",
     "start:dev": "nodemon -q",
     "prepare": "husky install",
-    "jest-coverage": "jest src --coverage"
+    "test": "jest src --passWithNoTests",
+    "test-watch": "jest src --watchAll",
+    "jest-coverage": "jest src --coverage --watchAll=false --passWithNoTests"
   },
   "keywords": [],
   "author": "",
