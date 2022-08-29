@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
-import notFoundError from "./middlewares/errors";
+import { notFoundError } from "./middlewares/errors";
 
 const app = express();
 app.disable("x-powered-by");
