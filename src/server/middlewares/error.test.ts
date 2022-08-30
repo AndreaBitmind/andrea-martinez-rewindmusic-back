@@ -1,5 +1,5 @@
 import { Response, Request, NextFunction } from "express";
-import { ICustomError } from "../../interfaces/ErrorsInterface";
+import CustomError from "../../utils/CustomError";
 import { notFoundError, generalError } from "./errors";
 
 describe("Given a notFoundError middleware", () => {
@@ -31,21 +31,25 @@ describe("Given a notFoundError middleware", () => {
 describe("Given a generalError function", () => {
   describe("When its called", () => {
     test("Then it should respond with a status error code and a public message error", async () => {
-      const error = {
-        code: 580,
-        publicMessage: "Everything has gone wrong",
+      const error: CustomError = {
+        publicMessage: "Something is not going well",
+        code: "",
+        statusCode: 456,
+        message: "",
+        name: "",
       };
+
       const request = {};
       const response = {
         status: jest.fn().mockReturnThis(),
         json: jest.fn().mockResolvedValue(error.publicMessage),
       };
       const next = jest.fn;
-      const status = 580;
+      const status = 456;
       const resolvedJson = { error: error.publicMessage };
 
       await generalError(
-        error as ICustomError,
+        error as CustomError,
         request as unknown as Request,
         response as unknown as Response,
         next as NextFunction
@@ -58,9 +62,12 @@ describe("Given a generalError function", () => {
 
   describe("When its called without a code an without a public message", () => {
     test("Then it should return a response with 500 and a default message", async () => {
-      const error = {
-        code: null as number,
-        publicMessage: null as string,
+      const error: CustomError = {
+        publicMessage: null,
+        code: "",
+        statusCode: null,
+        message: "",
+        name: "",
       };
       const request = {};
       const response = {
@@ -72,7 +79,7 @@ describe("Given a generalError function", () => {
       const resolvedJson = { error: "Everything has gone wrong" };
 
       await generalError(
-        error as ICustomError,
+        error as CustomError,
         request as unknown as Request,
         response as unknown as Response,
         next as NextFunction

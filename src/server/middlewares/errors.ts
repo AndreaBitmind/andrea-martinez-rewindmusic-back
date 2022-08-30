@@ -2,7 +2,8 @@ import "../../loadEnvironment";
 import { NextFunction, Request, Response } from "express";
 import chalk from "chalk";
 import Debug from "debug";
-import { ICustomError } from "../../interfaces/ErrorsInterface";
+import { ValidationError } from "express-validation";
+import CustomError from "../../utils/CustomError";
 
 const debug = Debug("front-final-project:server:middlewares:errors");
 
@@ -11,16 +12,25 @@ export const notFoundError = (request: Request, response: Response) => {
 };
 
 export const generalError = (
-  error: ICustomError,
+  error: CustomError,
   request: Request,
   response: Response,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction
 ) => {
-  const errorCode = error.code ?? 500;
-  const errorMessage = error.publicMessage ?? "Everything has gone wrong";
+  const errorCode = error.code;
+  const status = error.statusCode ?? 500;
+  let errorMessage = error.publicMessage ?? "Everything has gone wrong";
 
-  debug(chalk.red(error.message));
+  if (error instanceof ValidationError) {
+    debug(chalk.red("Request validation error:"));
+    error.details.body.forEach((errorInfo) => {
+      debug(chalk.red(errorInfo.message));
+    });
+    errorMessage = "Wrong data";
+  }
 
-  response.status(errorCode).json({ error: errorMessage });
+  debug(chalk.red(error.message, errorCode));
+
+  response.status(status).json({ error: errorMessage });
 };
