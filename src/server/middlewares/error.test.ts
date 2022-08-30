@@ -55,4 +55,31 @@ describe("Given a generalError function", () => {
       expect(response.json).toBeCalledWith(resolvedJson);
     });
   });
+
+  describe("When its called without a code an without a public message", () => {
+    test("Then it should return a response with 500 and a default message", async () => {
+      const error = {
+        code: null as number,
+        publicMessage: null as string,
+      };
+      const request = {};
+      const response = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn().mockResolvedValue(error.publicMessage),
+      };
+      const next = jest.fn;
+      const status = 500;
+      const resolvedJson = { error: "Everything has gone wrong" };
+
+      await generalError(
+        error as ICustomError,
+        request as unknown as Request,
+        response as unknown as Response,
+        next as NextFunction
+      );
+
+      expect(response.status).toBeCalledWith(status);
+      expect(response.json).toBeCalledWith(resolvedJson);
+    });
+  });
 });
