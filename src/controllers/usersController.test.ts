@@ -38,13 +38,16 @@ describe("Given a register user controller", () => {
 
     test("Then it should call the response method json with a new user object", async () => {
       User.create = jest.fn().mockResolvedValue(mockBodyTest);
+      const expectedMessage = {
+        message: "User created",
+      };
 
       await registerUser(
         reqTest as Request,
         responseTest as Response,
         nextTest as NextFunction
       );
-      expect(responseTest.json).toHaveBeenCalledWith({ user: mockBodyTest });
+      expect(responseTest.json).toHaveBeenCalledWith(expectedMessage);
     });
   });
 
