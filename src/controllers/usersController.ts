@@ -32,13 +32,11 @@ export const loginUser = async (
   next: NextFunction
 ) => {
   const user = req.body as UserRegister;
-
   const userError = new CustomError(
     403,
     "User not found",
     "User or password not valid"
   );
-
   let findUsers: Array<UserData>;
   try {
     findUsers = await User.find({ userName: user.userName });
@@ -49,7 +47,7 @@ export const loginUser = async (
   } catch (error) {
     const finalError = new CustomError(
       403,
-      `name: ${(error as Error).name}; message:  ${(error as Error).message}`,
+      "User invalid",
       "User or password invalid "
     );
     next(finalError);
@@ -69,7 +67,7 @@ export const loginUser = async (
   } catch (error) {
     const finalError = new CustomError(
       403,
-      `name: ${(error as Error).name}; message:  ${(error as Error).message}`,
+      "Password not found",
       "User or password invalid "
     );
     next(finalError);
