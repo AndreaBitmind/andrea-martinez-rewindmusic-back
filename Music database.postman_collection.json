@@ -38,6 +38,28 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "    {\"userName\": \"testLogin\",\r\n    \"password\": \"123456\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localhost}}/users/login",
+          "host": ["{{localhost}}"],
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
     }
   ],
   "event": [
@@ -64,7 +86,7 @@
     },
     {
       "key": "apiURL",
-      "value": "https://amrtinz-final-project-2022-bcn.herokuapp.com/",
+      "value": "https://amrtinz-final-project-2022-bcn.herokuapp.com",
       "type": "default"
     }
   ]
