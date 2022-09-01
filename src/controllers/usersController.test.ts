@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import User from "../database/models/User";
 import CustomError from "../utils/CustomError";
-import registerUser from "./usersController";
+import { registerUser } from "./usersController";
 
 describe("Given a register user controller", () => {
   const mockBodyTest = {
