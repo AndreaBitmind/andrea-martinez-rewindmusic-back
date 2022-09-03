@@ -1,42 +1,42 @@
 import { model, Schema } from "mongoose";
 
 const songSchema = new Schema({
-  SongName: {
+  songName: {
     type: String,
     required: true,
   },
 
-  Album: {
+  album: {
     type: String,
     required: true,
   },
 
-  Year: {
+  year: {
     type: String,
     required: true,
   },
 
-  Band: {
+  band: {
     type: String,
     required: true,
   },
 
-  Instrument: {
+  instrument: {
     type: String,
     required: true,
   },
 
-  Image: {
+  image: {
     type: String,
     required: true,
   },
 
-  Embeded: {
+  embeded: {
     type: String,
     required: true,
   },
 
-  Owner: {
+  owner: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
