@@ -13,3 +13,6 @@ export const createToken = (payload: CustomJwtPayload) =>
 
 export const hashCompare = (text: string, hash: string) =>
   bcrypt.compare(text, hash);
+
+const secretWord = process.env.SECRET;
+export const verifyToken = (token: string) => jwt.verify(token, secretWord);
