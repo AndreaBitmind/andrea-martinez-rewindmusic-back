@@ -9,8 +9,8 @@ const mockHashCreateValue: boolean | jest.Mock = true;
 
 let mockHashCompareValue = true;
 
-jest.mock("../utils/auth", () => ({
-  ...jest.requireActual("../utils/auth"),
+jest.mock("../../utils/auth", () => ({
+  ...jest.requireActual("../../utils/auth"),
   createToken: () => jest.fn().mockReturnValue("#"),
   hashCreator: () => mockHashCreateValue,
   hashCompare: () => mockHashCompareValue,
