@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import Song from "../../database/models/Song";
-import { Isong } from "../../interfaces/songInterface";
+import { Isong } from "../../interfaces/SongsInterface";
 import CustomError from "../../utils/CustomError";
 import getAllSongs from "./songsController";
 
