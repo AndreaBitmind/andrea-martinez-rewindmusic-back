@@ -3,7 +3,7 @@ export interface Isong {
   album: string;
   year: string;
   band: string;
-  instrument: string;
+  instrument: string[];
   image: string;
   embeded: string;
 }
