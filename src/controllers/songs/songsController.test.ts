@@ -10,7 +10,7 @@ describe("Given a getAllSongs function", () => {
     album: "vicios y virtudes",
     year: "2001",
     band: "SFDK",
-    instrument: "piano",
+    instrument: ["piano"],
     image: "http://picture.com",
     embeded: "prueba1",
   };

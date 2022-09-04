@@ -22,7 +22,8 @@ const songSchema = new Schema({
   },
 
   instrument: {
-    type: String,
+    type: [String],
+    default: undefined,
     required: true,
   },
 
