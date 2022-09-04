@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import User from "../database/models/User";
-import { CustomJwtPayload } from "../interfaces/CustomJwtPayload";
-import { UserData, UserRegister } from "../interfaces/UserInterfaces";
-import { createToken, hashCompare, hashCreator } from "../utils/auth";
-import CustomError from "../utils/CustomError";
+import User from "../../database/models/User";
+import { CustomJwtPayload } from "../../interfaces/CustomJwtPayload";
+import { UserData, UserRegister } from "../../interfaces/UserInterfaces";
+import { createToken, hashCompare, hashCreator } from "../../utils/auth";
+import CustomError from "../../utils/CustomError";
 
 export const registerUser = async (
   request: Request,

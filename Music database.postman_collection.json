@@ -24,7 +24,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "  {\"userName\": \"pep\", \"password\": \"grilla\" }",
+          "raw": "  {\"userName\": \"natx\", \"password\": \"991441\" }",
           "options": {
             "raw": {
               "language": "json"
@@ -32,8 +32,8 @@
           }
         },
         "url": {
-          "raw": "{{localhost}}/users/register",
-          "host": ["{{localhost}}"],
+          "raw": "{{apiURL}}/users/register",
+          "host": ["{{apiURL}}"],
           "path": ["users", "register"]
         }
       },
@@ -57,6 +57,18 @@
           "raw": "{{localhost}}/users/login",
           "host": ["{{localhost}}"],
           "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getAllSongs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{apiURL}}songs",
+          "host": ["{{apiURL}}songs"]
         }
       },
       "response": []
