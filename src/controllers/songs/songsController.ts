@@ -2,7 +2,11 @@ import { NextFunction, Request, Response } from "express";
 import Song from "../../database/models/Song";
 import CustomError from "../../utils/CustomError";
 
-const getAllSongs = async (req: Request, res: Response, next: NextFunction) => {
+export const getAllSongs = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const songs = await Song.find();
 
@@ -23,4 +27,24 @@ const getAllSongs = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export default getAllSongs;
+export const deleteSong = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+
+  try {
+    const deleteSongItem = await Song.findByIdAndDelete(id);
+    if (deleteSongItem) {
+      res.status(200).json({ message: "Song deleted correctly" });
+    }
+  } catch (error) {
+    const newError = new CustomError(
+      404,
+      "Error while deleting song",
+      "Error while deleting song"
+    );
+    next(newError);
+  }
+};
