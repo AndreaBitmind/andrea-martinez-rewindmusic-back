@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import Song from "../../database/models/Song";
 import { Isong } from "../../interfaces/SongsInterface";
 import CustomError from "../../utils/CustomError";
-import getAllSongs from "./songsController";
+import { deleteSong, getAllSongs } from "./songsController";
 
 describe("Given a getAllSongs function", () => {
   const mockSong: Isong = {
@@ -16,14 +16,11 @@ describe("Given a getAllSongs function", () => {
   };
 
   const req = {} as Partial<Request>;
-
   const res = {
     status: jest.fn().mockReturnThis(),
     json: jest.fn(),
   } as Partial<Response>;
-
   const next = jest.fn() as NextFunction;
-
   describe("When it's called with a request, response and a next function", () => {
     test("Then it should response with a status 200", async () => {
       Song.find = jest.fn().mockReturnValue([mockSong]);
@@ -73,6 +70,59 @@ describe("Given a getAllSongs function", () => {
 
       expect(res.status).toHaveBeenCalledWith(status);
       expect(res.json).toHaveBeenCalledWith(expectedError);
+    });
+  });
+});
+
+describe("Given a deleteSong controller", () => {
+  describe("When it receives a request", () => {
+    test("Then it should respond with a method status and a confirmation of deletion", async () => {
+      const expectedJsonMessage = {
+        message: "Song deleted correctly",
+      };
+      const next = jest.fn() as NextFunction;
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn().mockReturnThis(),
+      } as Partial<Response>;
+      const req = {
+        params: { id: "629a0d040a3e1e0a9b455361" },
+      } as Partial<Request>;
+
+      Song.findByIdAndDelete = jest.fn().mockResolvedValue(expectedJsonMessage);
+      await deleteSong(req as Request, res as Response, next as NextFunction);
+
+      const expectedStatus = 200;
+
+      expect(res.status).toHaveBeenCalledWith(expectedStatus);
+      expect(res.json).toHaveBeenCalledWith(expectedJsonMessage);
+    });
+  });
+
+  describe("When it receives a request to delete an item but can't find it", () => {
+    test("Then it should throw a CustomError with 404 as code", async () => {
+      const requestTest = {
+        params: { id: "" },
+      } as Partial<Request>;
+
+      const expectedError = new CustomError(
+        404,
+        "Error while deleting song",
+        "Error while deleting song"
+      );
+
+      Song.findByIdAndDelete = jest.fn().mockRejectedValue(expectedError);
+
+      const next = jest.fn() as NextFunction;
+
+      const responseTest = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      } as Partial<Response>;
+
+      await deleteSong(requestTest as Request, responseTest as Response, next);
+
+      expect(next).toHaveBeenCalledWith(expectedError);
     });
   });
 });
