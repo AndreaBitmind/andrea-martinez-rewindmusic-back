@@ -18,7 +18,7 @@ STATUS: 201
 [PUT*] /songs/modify -> recibe una canción, modifica en la BD la canción con la misma id que la recibida, y devuelve la canción modificada
 STATUS: 201
 
-[DELETE*] /songs/delete/:id -> elimina de la BD una canción por id y devuelve un objeto con la id
+[DELETE*] /songs/:id -> elimina de la BD una canción por id y devuelve un objeto con la id
 STATUS: 201
 
 STATUS ERRORES=
