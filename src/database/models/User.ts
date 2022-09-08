@@ -11,6 +11,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  songs: [{ type: Schema.Types.ObjectId, ref: "Song" }],
 });
 
 const User = model("User", userSchema, "users");
