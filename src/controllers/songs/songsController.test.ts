@@ -2,19 +2,18 @@ import { NextFunction, Request, Response } from "express";
 import Song from "../../database/models/Song";
 import { Isong } from "../../interfaces/SongsInterface";
 import CustomError from "../../utils/CustomError";
-import { deleteSong, getAllSongs } from "./songsController";
+import { deleteSong, getAllSongs, getById } from "./songsController";
 
+const mockSong: Isong = {
+  songName: "Barbie girl",
+  album: "vicios y virtudes",
+  year: "2001",
+  band: "SFDK",
+  instrument: ["piano"],
+  image: "http://picture.com",
+  embeded: "prueba1",
+};
 describe("Given a getAllSongs function", () => {
-  const mockSong: Isong = {
-    songName: "Barbie girl",
-    album: "vicios y virtudes",
-    year: "2001",
-    band: "SFDK",
-    instrument: ["piano"],
-    image: "http://picture.com",
-    embeded: "prueba1",
-  };
-
   const req = {} as Partial<Request>;
   const res = {
     status: jest.fn().mockReturnThis(),
@@ -121,6 +120,80 @@ describe("Given a deleteSong controller", () => {
       } as Partial<Response>;
 
       await deleteSong(requestTest as Request, responseTest as Response, next);
+
+      expect(next).toHaveBeenCalledWith(expectedError);
+    });
+  });
+});
+
+describe("Given a getById function", () => {
+  describe("When it's called with a request, response and next function", () => {
+    test("Then it show response with a status 200 and the song found", async () => {
+      const requestTest = {
+        params: { id: "62e0ajh9b455361" },
+      } as Partial<Request>;
+
+      const expectedStatus = 200;
+      const expectedResult = { song: mockSong };
+      const next = jest.fn() as NextFunction;
+
+      const responseTest = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn().mockReturnThis(),
+      } as Partial<Response>;
+
+      Song.findById = jest.fn().mockResolvedValue(expectedResult);
+
+      await getById(requestTest as Request, responseTest as Response, next);
+      expect(responseTest.status).toHaveBeenCalledWith(expectedStatus);
+    });
+  });
+
+  describe("When it receives a request to find a song, but can't find it", () => {
+    test("Then it should response with 404 as code", async () => {
+      const requestTest = {
+        params: { id: "" },
+      } as Partial<Request>;
+
+      const expectedStatus = 200;
+
+      Song.findById = jest.fn().mockReturnValue("");
+
+      const next = jest.fn() as NextFunction;
+
+      const responseTest = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      } as Partial<Response>;
+
+      await getById(requestTest as Request, responseTest as Response, next);
+
+      expect(responseTest.status).toHaveBeenCalledWith(expectedStatus);
+    });
+  });
+
+  describe("When it receives a request to find a song, but has error while finding the song requested", () => {
+    test("Then it should call next function with an error", async () => {
+      Song.findById = jest.fn().mockRejectedValue(new Error());
+
+      const requestTest = {
+        params: { id: "" },
+      } as Partial<Request>;
+
+      const responseTest = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      } as Partial<Response>;
+
+      const expectedError = new CustomError(
+        404,
+        "Element not found",
+        "Error while finding the song requested"
+      );
+
+      const next = jest.fn() as NextFunction;
+
+      await getById(requestTest as Request, responseTest as Response, next);
 
       expect(next).toHaveBeenCalledWith(expectedError);
     });
