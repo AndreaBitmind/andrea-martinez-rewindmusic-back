@@ -55,8 +55,8 @@ export const getById = async (
   next: NextFunction
 ) => {
   try {
-    const idSong = req.params.id;
-    const song = await Song.findById(idSong);
+    const { id } = req.params;
+    const song = await Song.findById(id);
 
     res.status(200).json({ song });
   } catch {
