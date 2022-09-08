@@ -48,3 +48,20 @@ export const deleteSong = async (
     next(newError);
   }
 };
+
+export const getById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const idSong = req.params.id;
+    const song = await Song.findById(idSong);
+
+    res.status(200).json({ song });
+  } catch {
+    next(
+      new CustomError(404, "Element not found", "Can't response this request")
+    );
+  }
+};
