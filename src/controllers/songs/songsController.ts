@@ -65,3 +65,23 @@ export const getById = async (
     );
   }
 };
+
+export const createSong = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const song = req.body;
+  try {
+    const songCreated = await Song.create(song);
+    res.status(201).json({ song: songCreated });
+  } catch (error) {
+    const newError = new CustomError(
+      400,
+      "error creating a song",
+      "Cannot create the song"
+    );
+
+    next(newError);
+  }
+};
