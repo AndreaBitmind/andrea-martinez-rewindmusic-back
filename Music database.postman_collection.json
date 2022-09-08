@@ -1,105 +1,135 @@
 {
-  "info": {
-    "_postman_id": "f8e0c3d8-dd83-49e8-b852-a4eb8966f569",
-    "name": "Music database",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "No endpoint yet",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{localhost}}",
-          "host": ["{{localhost}}"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "register",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "  {\"userName\": \"natx\", \"password\": \"991441\" }",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{apiURL}}/users/register",
-          "host": ["{{apiURL}}"],
-          "path": ["users", "register"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "login",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "    {\"userName\": \"testLogin\",\r\n    \"password\": \"123456\"}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{localhost}}/users/login",
-          "host": ["{{localhost}}"],
-          "path": ["users", "login"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "getAllSongs",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{apiURL}}songs",
-          "host": ["{{apiURL}}songs"]
-        }
-      },
-      "response": []
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "localhost",
-      "value": "http://localhost:4000",
-      "type": "default"
-    },
-    {
-      "key": "apiURL",
-      "value": "https://amrtinz-final-project-2022-bcn.herokuapp.com",
-      "type": "default"
-    }
-  ]
+	"info": {
+		"_postman_id": "f8e0c3d8-dd83-49e8-b852-a4eb8966f569",
+		"name": "Music database",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\"userName\": \"natx\", \"password\": \"991441\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/users/register",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\"userName\": \"testLogin\",\r\n    \"password\": \"123456\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/users/login",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllSongs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiURL}}songs",
+					"host": [
+						"{{apiURL}}songs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetOneById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/songs/631856ccc16c9b32b8822fb4",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"songs",
+						"631856ccc16c9b32b8822fb4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "http://localhost:4000",
+			"type": "default"
+		},
+		{
+			"key": "apiURL",
+			"value": "https://amrtinz-final-project-2022-bcn.herokuapp.com",
+			"type": "default"
+		}
+	]
 }
