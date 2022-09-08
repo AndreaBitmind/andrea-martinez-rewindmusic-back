@@ -6,18 +6,6 @@
   },
   "item": [
     {
-      "name": "No endpoint yet",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{localhost}}",
-          "host": ["{{localhost}}"]
-        }
-      },
-      "response": []
-    },
-    {
       "name": "register",
       "request": {
         "method": "POST",
@@ -69,6 +57,27 @@
         "url": {
           "raw": "{{apiURL}}songs",
           "host": ["{{apiURL}}songs"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "GetOneById",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{localhost}}/songs/631856ccc16c9b32b8822fb4",
+          "host": ["{{localhost}}"],
+          "path": ["songs", "631856ccc16c9b32b8822fb4"]
         }
       },
       "response": []
