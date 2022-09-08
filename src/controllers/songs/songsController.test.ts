@@ -2,7 +2,12 @@ import { NextFunction, Request, Response } from "express";
 import Song from "../../database/models/Song";
 import { Isong } from "../../interfaces/SongsInterface";
 import CustomError from "../../utils/CustomError";
-import { deleteSong, getAllSongs, getById } from "./songsController";
+import {
+  createSong,
+  deleteSong,
+  getAllSongs,
+  getById,
+} from "./songsController";
 
 const mockSong: Isong = {
   songName: "Barbie girl",
@@ -196,6 +201,44 @@ describe("Given a getById function", () => {
       await getById(requestTest as Request, responseTest as Response, next);
 
       expect(next).toHaveBeenCalledWith(expectedError);
+    });
+  });
+});
+
+describe("Given a createSong controller", () => {
+  describe("When its invoked with method createSong", () => {
+    test("then it should call the status method with a 200 and json with the song created", async () => {
+      const req = {} as Partial<Request>;
+      const res: Partial<Response> = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn().mockResolvedValue({ song: mockSong }),
+      };
+
+      const next = jest.fn();
+      Song.create = jest.fn().mockResolvedValue(mockSong);
+
+      await createSong(req as Request, res as Response, next as NextFunction);
+
+      expect(res.status).toHaveBeenCalledWith(201);
+      expect(res.json).toHaveBeenCalledWith({ song: mockSong });
+    });
+    test("And if it throw an error creating it should next with an error", async () => {
+      const error = new CustomError(
+        400,
+        "error creating a song",
+        "Cannot create the song"
+      );
+      const req = {} as Partial<Request>;
+      const res: Partial<Response> = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn().mockResolvedValue([]),
+      };
+      const next = jest.fn();
+      Song.create = jest.fn().mockRejectedValue(error);
+
+      await createSong(req as Request, res as Response, next as NextFunction);
+
+      expect(next).toHaveBeenCalledWith(error);
     });
   });
 });
