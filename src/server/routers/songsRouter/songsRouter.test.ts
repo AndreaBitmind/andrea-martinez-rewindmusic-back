@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import app from "../..";
 import connectDB from "../../../database";
 import Song from "../../../database/models/Song";
-/* import Song from "../../../database/models/Song"; */
 
 let mongoServer: MongoMemoryServer;
 
