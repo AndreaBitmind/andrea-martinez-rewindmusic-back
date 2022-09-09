@@ -41,7 +41,7 @@ export const deleteSong = async (
     }
   } catch (error) {
     const newError = new CustomError(
-      404,
+      400,
       "Error while deleting song",
       "Error while deleting song"
     );

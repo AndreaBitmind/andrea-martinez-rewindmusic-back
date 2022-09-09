@@ -21,10 +21,12 @@ const songSchema = new Schema({
     required: true,
   },
 
-  instrument: {
-    type: [String],
-    default: undefined,
-    required: true,
+  firstInstrument: {
+    type: String,
+  },
+
+  secondInstrument: {
+    type: String,
   },
 
   image: {

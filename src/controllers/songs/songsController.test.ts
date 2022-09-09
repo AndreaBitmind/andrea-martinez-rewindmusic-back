@@ -14,7 +14,8 @@ const mockSong: Isong = {
   album: "vicios y virtudes",
   year: "2001",
   band: "SFDK",
-  instrument: ["piano"],
+  firstInstrument: "guitar",
+  secondInstrument: "piano",
   image: "http://picture.com",
   embeded: "prueba1",
 };
@@ -104,13 +105,13 @@ describe("Given a deleteSong controller", () => {
   });
 
   describe("When it receives a request to delete an item but can't find it", () => {
-    test("Then it should throw a CustomError with 404 as code", async () => {
+    test("Then it should throw a CustomError with 400 as code", async () => {
       const requestTest = {
         params: { id: "" },
       } as Partial<Request>;
 
       const expectedError = new CustomError(
-        404,
+        400,
         "Error while deleting song",
         "Error while deleting song"
       );
@@ -207,7 +208,7 @@ describe("Given a getById function", () => {
 
 describe("Given a createSong controller", () => {
   describe("When its invoked with method createSong", () => {
-    test("then it should call the status method with a 200 and json with the song created", async () => {
+    test("then it should call the status method with a 201 and json with the song created", async () => {
       const req = {} as Partial<Request>;
       const res: Partial<Response> = {
         status: jest.fn().mockReturnThis(),
