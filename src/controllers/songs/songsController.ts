@@ -74,7 +74,7 @@ export const createSong = async (
   const song = req.body;
   try {
     const songCreated = await Song.create(song);
-    res.status(201).json({ song: songCreated });
+    res.status(201).json({ songCreated });
   } catch (error) {
     const newError = new CustomError(
       400,

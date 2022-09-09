@@ -211,7 +211,7 @@ describe("Given a createSong controller", () => {
       const req = {} as Partial<Request>;
       const res: Partial<Response> = {
         status: jest.fn().mockReturnThis(),
-        json: jest.fn().mockResolvedValue({ song: mockSong }),
+        json: jest.fn().mockResolvedValue({ mockSong }),
       };
 
       const next = jest.fn();
@@ -220,7 +220,7 @@ describe("Given a createSong controller", () => {
       await createSong(req as Request, res as Response, next as NextFunction);
 
       expect(res.status).toHaveBeenCalledWith(201);
-      expect(res.json).toHaveBeenCalledWith({ song: mockSong });
+      expect(res.json).toHaveBeenCalledWith({ mockSong });
     });
     test("And if it throw an error creating it should next with an error", async () => {
       const error = new CustomError(

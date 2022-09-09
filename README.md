@@ -12,7 +12,7 @@ STATUS: 200
 [GET] /songs/:id -> devuelve una canción con detalles de la BD por id
 STATUS: 200
 
-[POST*] /songs/create -> recibe una canción (sin id), lo crea en la BD y devuelve la canción recién creada
+[POST*] /songs -> recibe una canción (sin id), lo crea en la BD y devuelve la canción recién creada
 STATUS: 201
 
 [PUT*] /songs/modify -> recibe una canción, modifica en la BD la canción con la misma id que la recibida, y devuelve la canción modificada
