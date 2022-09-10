@@ -31,12 +31,10 @@ const songSchema = new Schema({
 
   image: {
     type: String,
-    required: true,
   },
 
   embeded: {
     type: String,
-    required: true,
   },
 
   owner: {
