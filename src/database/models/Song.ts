@@ -41,6 +41,9 @@ const songSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  imageBackUp: {
+    type: String,
+  },
 });
 
 const Song = model("Song", songSchema, "songs");
