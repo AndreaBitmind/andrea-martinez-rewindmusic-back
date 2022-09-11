@@ -20,16 +20,14 @@ const supaBaseUpload = async (
   try {
     const fileData = await readFile(imagePath);
 
-    const storage = supabase.storage.from("Rewindmusic");
+    const storage = supabase.storage.from("rewindmusic");
 
     const uploadResult = await storage.upload(image, fileData);
-
     if (uploadResult.error) {
       next(uploadResult.error);
       return;
     }
     const { publicURL } = storage.getPublicUrl(image);
-
     req.body.imageBackUp = publicURL;
     next();
   } catch (error) {

@@ -9,8 +9,8 @@ const app = express();
 app.disable("x-powered-by");
 
 app.use(cors());
-app.use(express.static("uploads"));
 app.use(morgan("dev"));
+app.use(express.static("uploads"));
 app.use(express.json());
 
 app.use("/users", usersRouter);

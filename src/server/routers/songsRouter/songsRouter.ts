@@ -7,10 +7,11 @@ import {
   getById,
 } from "../../../controllers/songs/songsController";
 import { authentication } from "../../middlewares/authentication";
+import parserJson from "../../middlewares/parserJson";
 import supaBaseUpload from "../../middlewares/supaBase";
 
-const upload = multer({ dest: "uploads" });
 const songsRouter = express.Router();
+const upload = multer({ dest: "uploads" });
 
 songsRouter.get("/", getAllSongs);
 songsRouter.delete("/:id", deleteSong);
@@ -18,7 +19,7 @@ songsRouter.get("/:id", authentication, getById);
 songsRouter.post(
   "/",
   upload.single("image"),
-  authentication,
+  parserJson,
   supaBaseUpload,
   createSong
 );
