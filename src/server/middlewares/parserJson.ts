@@ -5,7 +5,7 @@ import CustomError from "../../utils/CustomError";
 
 const parserJson = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const newSong = req.body;
+    const newSong = req.body.song;
 
     const songObject = await JSON.parse(newSong);
 

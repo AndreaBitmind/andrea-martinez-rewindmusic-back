@@ -6,5 +6,5 @@ export interface Isong {
   firstInstrument: string;
   secondInstrument: string;
   image: string;
-  embeded: string;
+  embeded?: string;
 }

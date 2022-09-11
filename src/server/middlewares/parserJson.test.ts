@@ -9,7 +9,7 @@ jest.useFakeTimers();
 describe("Given a parserJson middleware", () => {
   describe("When called with a request, a response and a next function as arguments", () => {
     const mockedReqBody = {
-      image: "http://picture.com",
+      image: "",
     };
 
     const songJson = JSON.stringify(mockedReqBody);
@@ -34,7 +34,7 @@ describe("Given a parserJson middleware", () => {
 
       expect(req.body).toEqual({
         ...mockedReqBody,
-        song: `${Date.now()}${req.file.originalname}`,
+        image: `${Date.now()}${req.file.originalname}`,
       });
 
       expect(next).toHaveBeenCalled();
