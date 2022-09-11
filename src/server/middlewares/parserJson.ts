@@ -17,8 +17,6 @@ const parserJson = async (req: Request, res: Response, next: NextFunction) => {
       path.join("uploads", newName)
     );
 
-    songObject.image = newName;
-
     req.body = songObject;
 
     next();
