@@ -5,7 +5,7 @@ import CustomError from "../../utils/CustomError";
 
 const parserJson = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const newSong = req.body.song;
+    const newSong = req.body;
 
     const songObject = await JSON.parse(newSong);
 
@@ -16,8 +16,6 @@ const parserJson = async (req: Request, res: Response, next: NextFunction) => {
       path.join("uploads", req.file.filename),
       path.join("uploads", newName)
     );
-
-    songObject.image = newName;
 
     req.body = songObject;
 
