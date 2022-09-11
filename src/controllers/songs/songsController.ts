@@ -85,3 +85,36 @@ export const createSong = async (
     next(newError);
   }
 };
+
+export const modifySong = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const song = req.body;
+  const { id } = req.params;
+
+  try {
+    const modifiedSong = {
+      ...song,
+      songName: song.songName,
+      album: song.album,
+      year: song.year,
+      band: song.band,
+      image: song.image,
+      firstInstrument: song.firstInstrument,
+      secondInstrument: song.secondInstrument,
+    };
+
+    const upDatedSong = await Song.findByIdAndUpdate(id, modifiedSong);
+    res.status(200).json({ upDatedSong });
+  } catch (error) {
+    const newError = new CustomError(
+      400,
+      "Error to modify song",
+      "Could not modify the song"
+    );
+
+    next(newError);
+  }
+};
