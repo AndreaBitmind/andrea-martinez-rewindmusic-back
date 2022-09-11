@@ -5,6 +5,7 @@ import {
   deleteSong,
   getAllSongs,
   getById,
+  modifySong,
 } from "../../../controllers/songs/songsController";
 import { authentication } from "../../middlewares/authentication";
 import parserJson from "../../middlewares/parserJson";
@@ -23,5 +24,7 @@ songsRouter.post(
   supaBaseUpload,
   createSong
 );
+songsRouter.put("/:id", modifySong);
+
 
 export default songsRouter;
