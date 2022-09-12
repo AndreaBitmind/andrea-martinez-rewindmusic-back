@@ -24,7 +24,12 @@ songsRouter.post(
   supaBaseUpload,
   createSong
 );
-songsRouter.put("/:id", modifySong);
-
+songsRouter.put(
+  "/:id",
+  upload.single("image"),
+  parserJson,
+  supaBaseUpload,
+  modifySong
+);
 
 export default songsRouter;
