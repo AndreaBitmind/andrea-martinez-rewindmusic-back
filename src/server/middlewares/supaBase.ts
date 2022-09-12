@@ -4,10 +4,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import CustomError from "../../utils/CustomError";
 
-const supabase = createClient(
-  "https://lfviceopjnwwbtpsihzh.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxmdmljZW9wam53d2J0cHNpaHpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjI4MjMzMzAsImV4cCI6MTk3ODM5OTMzMH0.che_MtZAByN0wMEoOlYgr_-z5a9eSW6zfi0gWVcos6I"
-);
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPA_KEY);
 
 const supaBaseUpload = async (
   req: Request,
