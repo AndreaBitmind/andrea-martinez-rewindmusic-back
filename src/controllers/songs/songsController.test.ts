@@ -248,7 +248,7 @@ describe("Given a createSong controller", () => {
 describe("Given a modifySong function", () => {
   describe("When it's called with a request, response and next function", () => {
     test("Then it show response with a status 200 and the modified song", async () => {
-      const upDatedSong = {
+      const modifiedSong = {
         id: "62e0ajh9b455361",
         songName: "We are your friends",
         album: "We are your friends",
@@ -260,16 +260,16 @@ describe("Given a modifySong function", () => {
       };
 
       const requestTest = {
-        body: upDatedSong,
+        body: modifiedSong,
         params: { id: "62e0ajh9b455361" },
       } as Partial<Request>;
 
       const res: Partial<Response> = {
         status: jest.fn().mockReturnThis(),
-        json: jest.fn().mockResolvedValue({ upDatedSong }),
+        json: jest.fn().mockResolvedValue({ modifiedSong }),
       };
 
-      Song.findByIdAndUpdate = jest.fn().mockResolvedValue(upDatedSong);
+      Song.findByIdAndUpdate = jest.fn().mockResolvedValue(modifiedSong);
 
       const expectedStatus = 200;
 
@@ -278,7 +278,7 @@ describe("Given a modifySong function", () => {
       await modifySong(requestTest as Request, res as Response, next);
 
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
-      expect(res.json).toHaveBeenCalledWith({ upDatedSong });
+      expect(res.json).toHaveBeenCalledWith({ modifiedSong });
     });
 
     test("Then it should next with an error if it cannot complete the update", async () => {
