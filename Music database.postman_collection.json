@@ -1,221 +1,190 @@
 {
-	"info": {
-		"_postman_id": "f8e0c3d8-dd83-49e8-b852-a4eb8966f569",
-		"name": "Music database",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "  {\"userName\": \"natx\", \"password\": \"991441\" }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{apiURL}}/users/register",
-					"host": [
-						"{{apiURL}}"
-					],
-					"path": [
-						"users",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "    {\"userName\": \"testLogin\",\r\n    \"password\": \"123456\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{localhost}}/users/login",
-					"host": [
-						"{{localhost}}"
-					],
-					"path": [
-						"users",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getAllSongs",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{apiURL}}songs",
-					"host": [
-						"{{apiURL}}songs"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTcxM2Q3ZDc1NmVlYjRhYWQ5MTJhYyIsInVzZXJOYW1lIjoiYW5kcmVpdGE1IiwiaWF0IjoxNjYyNTM4NTk1fQ.5yO3q3pK2apiXdVBQzQAkleLzae1oGi1IUD8lF7lpmw",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{apiURL}}/songs/6315e2f3c16c9b32b8822fad",
-					"host": [
-						"{{apiURL}}"
-					],
-					"path": [
-						"songs",
-						"6315e2f3c16c9b32b8822fad"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GetOneById",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTcxM2Q3ZDc1NmVlYjRhYWQ5MTJhYyIsInVzZXJOYW1lIjoiYW5kcmVpdGE1IiwiaWF0IjoxNjYyNTM4NTk1fQ.5yO3q3pK2apiXdVBQzQAkleLzae1oGi1IUD8lF7lpmw",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{localhost}}/songs/631856ccc16c9b32b8822fb4",
-					"host": [
-						"{{localhost}}"
-					],
-					"path": [
-						"songs",
-						"631856ccc16c9b32b8822fb4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "createSong",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTcxM2Q3ZDc1NmVlYjRhYWQ5MTJhYyIsInVzZXJOYW1lIjoiYW5kcmVpdGE1IiwiaWF0IjoxNjYyNTM4NTk1fQ.5yO3q3pK2apiXdVBQzQAkleLzae1oGi1IUD8lF7lpmw",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "image",
-							"type": "file",
-							"src": "/C:/Users/andre/Pictures/1571688350834.jpg"
-						},
-						{
-							"key": "song",
-							"value": " {\"songName\":\"Woman in love\",\"album\": \"Oques grasses\",\"year\": \"2001\",\"band\": \"SFDK\",\"firstInstrument\":\"piano\",\"secondInstrument\":\"trumpet\"}",
-							"type": "text"
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{localhost}}/songs/",
-					"host": [
-						"{{localhost}}"
-					],
-					"path": [
-						"songs",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "modifySong",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "localhost",
-			"value": "http://localhost:4000",
-			"type": "default"
-		},
-		{
-			"key": "apiURL",
-			"value": "https://amrtinz-final-project-2022-bcn.herokuapp.com",
-			"type": "default"
-		}
-	]
+  "info": {
+    "_postman_id": "f8e0c3d8-dd83-49e8-b852-a4eb8966f569",
+    "name": "Music database",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "  {\"userName\": \"natx\", \"password\": \"991441\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{apiURL}}/users/register",
+          "host": ["{{apiURL}}"],
+          "path": ["users", "register"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "    {\"userName\": \"testLogin\",\r\n    \"password\": \"123456\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localhost}}/users/login",
+          "host": ["{{localhost}}"],
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getAllSongs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{apiURL}}songs",
+          "host": ["{{apiURL}}songs"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTcxM2Q3ZDc1NmVlYjRhYWQ5MTJhYyIsInVzZXJOYW1lIjoiYW5kcmVpdGE1IiwiaWF0IjoxNjYyNTM4NTk1fQ.5yO3q3pK2apiXdVBQzQAkleLzae1oGi1IUD8lF7lpmw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{apiURL}}/songs/6315e2f3c16c9b32b8822fad",
+          "host": ["{{apiURL}}"],
+          "path": ["songs", "6315e2f3c16c9b32b8822fad"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetOneById",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTcxM2Q3ZDc1NmVlYjRhYWQ5MTJhYyIsInVzZXJOYW1lIjoiYW5kcmVpdGE1IiwiaWF0IjoxNjYyNTM4NTk1fQ.5yO3q3pK2apiXdVBQzQAkleLzae1oGi1IUD8lF7lpmw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{localhost}}/songs/631856ccc16c9b32b8822fb4",
+          "host": ["{{localhost}}"],
+          "path": ["songs", "631856ccc16c9b32b8822fb4"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "createSong",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTcxM2Q3ZDc1NmVlYjRhYWQ5MTJhYyIsInVzZXJOYW1lIjoiYW5kcmVpdGE1IiwiaWF0IjoxNjYyNTM4NTk1fQ.5yO3q3pK2apiXdVBQzQAkleLzae1oGi1IUD8lF7lpmw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": "/C:/Users/andre/Pictures/1571688350834.jpg"
+            },
+            {
+              "key": "song",
+              "value": " {\"songName\":\"Woman in love\",\"album\": \"Oques grasses\",\"year\": \"2001\",\"band\": \"SFDK\",\"firstInstrument\":\"piano\",\"secondInstrument\":\"trumpet\"}",
+              "type": "text"
+            }
+          ],
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localhost}}/songs/",
+          "host": ["{{localhost}}"],
+          "path": ["songs", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "modifySong",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "localhost",
+      "value": "http://localhost:4000",
+      "type": "default"
+    },
+    {
+      "key": "apiURL",
+      "value": "https://amrtinz-final-project-2022-bcn.herokuapp.com",
+      "type": "default"
+    }
+  ]
 }
