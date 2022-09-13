@@ -64,14 +64,39 @@
     {
       "name": "Delete",
       "request": {
-        "method": "GET",
-        "header": []
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTcxM2Q3ZDc1NmVlYjRhYWQ5MTJhYyIsInVzZXJOYW1lIjoiYW5kcmVpdGE1IiwiaWF0IjoxNjYyNTM4NTk1fQ.5yO3q3pK2apiXdVBQzQAkleLzae1oGi1IUD8lF7lpmw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{apiURL}}/songs/6315e2f3c16c9b32b8822fad",
+          "host": ["{{apiURL}}"],
+          "path": ["songs", "6315e2f3c16c9b32b8822fad"]
+        }
       },
       "response": []
     },
     {
       "name": "GetOneById",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTcxM2Q3ZDc1NmVlYjRhYWQ5MTJhYyIsInVzZXJOYW1lIjoiYW5kcmVpdGE1IiwiaWF0IjoxNjYyNTM4NTk1fQ.5yO3q3pK2apiXdVBQzQAkleLzae1oGi1IUD8lF7lpmw",
+              "type": "string"
+            }
+          ]
+        },
         "method": "GET",
         "header": [],
         "url": {
@@ -79,6 +104,57 @@
           "host": ["{{localhost}}"],
           "path": ["songs", "631856ccc16c9b32b8822fb4"]
         }
+      },
+      "response": []
+    },
+    {
+      "name": "createSong",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTcxM2Q3ZDc1NmVlYjRhYWQ5MTJhYyIsInVzZXJOYW1lIjoiYW5kcmVpdGE1IiwiaWF0IjoxNjYyNTM4NTk1fQ.5yO3q3pK2apiXdVBQzQAkleLzae1oGi1IUD8lF7lpmw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": "/C:/Users/andre/Pictures/1571688350834.jpg"
+            },
+            {
+              "key": "song",
+              "value": " {\"songName\":\"Woman in love\",\"album\": \"Oques grasses\",\"year\": \"2001\",\"band\": \"SFDK\",\"firstInstrument\":\"piano\",\"secondInstrument\":\"trumpet\"}",
+              "type": "text"
+            }
+          ],
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localhost}}/songs/",
+          "host": ["{{localhost}}"],
+          "path": ["songs", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "modifySong",
+      "request": {
+        "method": "GET",
+        "header": []
       },
       "response": []
     }

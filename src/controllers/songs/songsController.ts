@@ -95,7 +95,7 @@ export const modifySong = async (
   const { id } = req.params;
 
   try {
-    const modifiedSong = {
+    const updatedSong = {
       ...song,
       songName: song.songName,
       album: song.album,
@@ -106,8 +106,8 @@ export const modifySong = async (
       secondInstrument: song.secondInstrument,
     };
 
-    const upDatedSong = await Song.findByIdAndUpdate(id, modifiedSong);
-    res.status(200).json({ upDatedSong });
+    const modifiedSong = await Song.findByIdAndUpdate(id, updatedSong);
+    res.status(200).json({ modifiedSong });
   } catch (error) {
     const newError = new CustomError(
       400,
