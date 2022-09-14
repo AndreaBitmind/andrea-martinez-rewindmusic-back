@@ -21,7 +21,7 @@ const parserJson = async (req: Request, res: Response, next: NextFunction) => {
 
     next();
   } catch (error) {
-    const newError = new CustomError(404, "Missing data", "Missing data");
+    const newError = new CustomError(400, "Missing data", "Missing data");
     next(newError);
   }
 };
