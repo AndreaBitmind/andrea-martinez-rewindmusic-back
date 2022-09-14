@@ -45,7 +45,7 @@ describe("Given a parserJson middleware", () => {
         body: { song: songJson },
       } as Partial<Request>;
 
-      const customError = new CustomError(404, "Missing data", "Missing data");
+      const customError = new CustomError(400, "Missing data", "Missing data");
       await parserJson(reqWithoutImage as Request, res as Response, next);
 
       expect(next).toHaveBeenCalledWith(customError);
