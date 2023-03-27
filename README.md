@@ -1,3 +1,5 @@
+## USERS ENDPOINTS
+
 [POST] /users/register -> registrará al usuario y se guardará en la BD
 STATUS: 201
 
@@ -21,7 +23,7 @@ STATUS: 201
 [DELETE*] /songs/:id -> elimina de la BD una canción por id y devuelve un objeto con la id
 STATUS: 201
 
-STATUS ERRORES=
+## STATUS ERRORS
 
 - 400: Bad Request
 - 404: Not found
