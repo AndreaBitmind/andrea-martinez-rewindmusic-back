@@ -16,7 +16,7 @@ Visit https://amrtinz-final-project-2022-bcn.netlify.app/ to run this frontend p
 - [Status Errors](#status-errors)
 - [Available Scripts](#available-scripts)
 - [Getting Started](#getting-started)
-  
+
 <br>
 
 ## Backend Features
@@ -27,10 +27,10 @@ Visit https://amrtinz-final-project-2022-bcn.netlify.app/ to run this frontend p
 - Integration with MongoDB for data storage.
 - Endpoint documentation for clear API usage.
 - CORS configuration for controlled access.
-  
+
 <br>
 
-  ## Used Packages
+## Used Packages
 
 - **bcryptjs**: Library for hashing passwords securely.
 - **chalk**: Provides colorized console logs for improved readability.
@@ -136,5 +136,5 @@ To run the backend locally, follow these steps:
 
 1. Clone the repository.
 2. Install dependencies using `npm install`.
-3. Create a `.env` file with required environment variables.
+3. Create a `.env` file with required environment variables found in `.env.example`.
 4. Run the server using `npm start` or `npm start:dev`.
